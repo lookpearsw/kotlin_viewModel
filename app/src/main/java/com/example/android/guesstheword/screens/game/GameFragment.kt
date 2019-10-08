@@ -53,6 +53,11 @@ class GameFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
+
+        // Set the viewmodel for databinding - this allows the bound layout access
+        // to all the data in the ViewModel
+        binding.gameViewModel = viewModel
+
         /** Setting up LiveData observation relationship **/
         viewModel.word.observe(this, Observer { newWord ->
             binding.wordText.text = newWord
@@ -76,7 +81,6 @@ class GameFragment : Fragment() {
 
 
     /** Methods for buttons presses **/
-
     private fun onSkip() {
         viewModel.onSkip()
     }
