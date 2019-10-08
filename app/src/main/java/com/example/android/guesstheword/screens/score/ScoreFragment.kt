@@ -42,6 +42,8 @@ class ScoreFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
+
+
         // Inflate view and obtain an instance of the binding class.
         val binding: ScoreFragmentBinding = DataBindingUtil.inflate(
                 inflater,
@@ -50,6 +52,7 @@ class ScoreFragment : Fragment() {
                 false
         )
 
+        binding.scoreViewModel = viewModel
 
         viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
         viewModel = ViewModelProviders.of(this, viewModelFactory)
